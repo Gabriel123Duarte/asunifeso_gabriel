@@ -10,6 +10,9 @@ public class Livro {
     private String nome;
     private Editora editora;
 
+    public Livro(Editora editora){
+        this.editora = editora;
+    }
     /**
      * @return the codigo
      */
