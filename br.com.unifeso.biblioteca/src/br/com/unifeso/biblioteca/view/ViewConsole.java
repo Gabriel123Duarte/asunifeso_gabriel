@@ -35,7 +35,7 @@ public class ViewConsole {
         objEmprestimo.setAluno(objAluno);
         objEmprestimo.setLivro(objLivro);
         
-        
+        System.err.println(objEmprestimo.getAluno().getNome());
     }
 }
    
