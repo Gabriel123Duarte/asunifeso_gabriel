@@ -7,7 +7,6 @@ package br.com.unifeso.biblioteca.model;
 public class Aluno extends Usuario {
     
     private String matricula;
-
     /**
      * @return the matricula
      */
@@ -21,5 +20,9 @@ public class Aluno extends Usuario {
     public void setMatricula(String matricula) {
         this.matricula = matricula;
     }    
-    
+        
+    @Override
+    public String toString(){
+        return matricula + " - " + super.getNome();
+    }
 }
