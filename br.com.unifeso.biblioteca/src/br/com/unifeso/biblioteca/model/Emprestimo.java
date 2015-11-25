@@ -66,6 +66,12 @@ public class Emprestimo {
     public void setAluno(Aluno aluno) {
         this.aluno = aluno;
     }
+
+    @Override
+    public String toString() {
+        return "Funcionário: " + funcionario.getNome() + "\n" + "Aluno: " + aluno.getNome() + "\n" + 
+               "Livro: " + livro.getNome() +  "\nData Entrega: " + getDataEntrega() + "\n";
+    }
     
     
 }

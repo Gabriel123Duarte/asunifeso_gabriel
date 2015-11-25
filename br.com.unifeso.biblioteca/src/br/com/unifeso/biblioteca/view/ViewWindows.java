@@ -109,7 +109,7 @@ public class ViewWindows extends javax.swing.JFrame {
         txtAlunos.setRows(5);
         jScrollPane1.setViewportView(txtAlunos);
 
-        btnLocalizarAlunos.setText("Localizar todas");
+        btnLocalizarAlunos.setText("Localizar todos");
         btnLocalizarAlunos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLocalizarAlunosActionPerformed(evt);
@@ -189,7 +189,7 @@ public class ViewWindows extends javax.swing.JFrame {
 
         jLabel9.setText("Editoras cadastradas:");
 
-        btnLocalizarEditoras.setText("Localizar todos");
+        btnLocalizarEditoras.setText("Localizar todas");
         btnLocalizarEditoras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLocalizarEditorasActionPerformed(evt);
@@ -268,7 +268,7 @@ public class ViewWindows extends javax.swing.JFrame {
         txtLivros.setRows(5);
         jScrollPane2.setViewportView(txtLivros);
 
-        btnLocalizarLivros.setText("Localizar todas");
+        btnLocalizarLivros.setText("Localizar todos");
         btnLocalizarLivros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLocalizarLivrosActionPerformed(evt);
@@ -364,13 +364,17 @@ public class ViewWindows extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnLocalizarFuncionarios)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnLocalizarFuncionarios)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnGravarFuncionario)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -380,12 +384,12 @@ public class ViewWindows extends javax.swing.JFrame {
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(txtCPFFuncionario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtNomeFuncionario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCPFFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
@@ -395,7 +399,7 @@ public class ViewWindows extends javax.swing.JFrame {
                     .addComponent(txtNomeFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnGravarFuncionario)
-                .addGap(17, 17, 17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -562,6 +566,10 @@ public class ViewWindows extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLocalizarEditorasActionPerformed
 
     private void btnGravarEditoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarEditoraActionPerformed
+        if(txtNomeEditora.getText().trim().equals("")){
+             JOptionPane.showMessageDialog(rootPane, "Você deve preencher todos os campos!");
+             return;
+        }
         Editora editora = new Editora();
         editora.setNome(txtNomeEditora.getText());
         
@@ -583,6 +591,19 @@ public class ViewWindows extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLocalizarLivrosActionPerformed
 
     private void btnGravarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarLivroActionPerformed
+        if(editoras.retornarTodas().size() == 0){
+            JOptionPane.showMessageDialog(rootPane, "Você deve cadastrar uma editora.");
+            return;
+        }
+        if(cbEditorasLivro.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(rootPane, "Você deve selecionar uma editora.");
+            return;
+        
+        }
+        if(txtNomeLivro.getText().trim().equals("") || txtCodigoLivro.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Você deve preencher todos os campos!");
+            return;
+        }
         Editora editora = (Editora) cbEditorasLivro.getSelectedItem();
         Livro livro = new Livro(editora);
         livro.setNome(txtNomeLivro.getText());
@@ -614,6 +635,11 @@ public class ViewWindows extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLocalizarAlunosActionPerformed
 
     private void btnGravarAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarAlunoActionPerformed
+        if(txtMatricula.getText().trim().equals("") || txtNomeAluno.getText().trim().equals("")){
+             JOptionPane.showMessageDialog(rootPane, "Você deve preencher todos os campos!");
+             return;
+        }
+        
         Aluno aluno = new Aluno();
         aluno.setMatricula(txtMatricula.getText());
         aluno.setNome(txtNomeAluno.getText());
@@ -626,6 +652,10 @@ public class ViewWindows extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGravarAlunoActionPerformed
 
     private void btnGravarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarFuncionarioActionPerformed
+        if(txtCPFFuncionario.getText().trim().equals("") || txtNomeFuncionario.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Você deve preencher todos os campos!");
+            return;
+        }
         Funcionario funcionario = new Funcionario();
         funcionario.setCpf(txtCPFFuncionario.getText());
         funcionario.setNome(txtNomeFuncionario.getText());
@@ -655,15 +685,40 @@ public class ViewWindows extends javax.swing.JFrame {
         txtEmprestimos.setText("");
         for(Emprestimo e : emprestimos.retornarTodos()){
             txtEmprestimos.append("--------------\n");
-            txtEmprestimos.append("Funcionario: " + e.getFuncionario()+ "\n");
-            txtEmprestimos.append("Aluno: " + e.getAluno()+ "\n");
-            txtEmprestimos.append("Livro: " + e.getLivro()+ "\n");
-            txtEmprestimos.append("Data entrega: " + e.getDataEntrega()+ "\n");
+            txtEmprestimos.append(e.toString());
             txtEmprestimos.append("--------------\n");
         }
     }//GEN-LAST:event_btnLocalizarEmprestimosActionPerformed
 
     private void btnGravarEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarEmprestimoActionPerformed
+        if(livros.retornarTodos().size() == 0){
+            JOptionPane.showMessageDialog(rootPane, "Você deve cadastrar um livro.");
+            return;
+        }
+        if(funcionarios.retornarTodos().size() == 0){
+            JOptionPane.showMessageDialog(rootPane, "Você deve cadastrar um funcionário.");
+            return;
+        }
+        if(alunos.retornarTodos().size() == 0){
+            JOptionPane.showMessageDialog(rootPane, "Você deve cadastrar um aluno.");
+            return;
+        }
+        if(cbLivrosEmprestimo.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(rootPane, "Você deve selecionar um livro.");
+            return;        
+        }
+        if(cbAlunosEmprestimo.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(rootPane, "Você deve selecionar um aluno.");
+            return;        
+        }
+        if(cbFuncionariosEmprestimo.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(rootPane, "Você deve selecionar um funcionário.");
+            return;        
+        }
+        if(txtDataEntregaEmprestimo.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Você deve preencher todos os campos!");
+            return;
+        }
         Livro livro = (Livro) cbLivrosEmprestimo.getSelectedItem();
         Aluno aluno = (Aluno) cbAlunosEmprestimo.getSelectedItem();        
         Funcionario funcionario = (Funcionario) cbFuncionariosEmprestimo.getSelectedItem();
