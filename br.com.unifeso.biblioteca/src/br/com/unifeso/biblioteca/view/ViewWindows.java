@@ -1,6 +1,10 @@
 package br.com.unifeso.biblioteca.view;
 
 import br.com.unifeso.biblioteca.controller.AlunoDB;
+import br.com.unifeso.biblioteca.controller.EditoraDB;
+import br.com.unifeso.biblioteca.controller.EmprestimoDB;
+import br.com.unifeso.biblioteca.controller.FuncionarioDB;
+import br.com.unifeso.biblioteca.controller.LivroDB;
 import br.com.unifeso.biblioteca.model.*;
 import javax.swing.JOptionPane;
 
@@ -8,11 +12,19 @@ import javax.swing.JOptionPane;
 public class ViewWindows extends javax.swing.JFrame {
     
     AlunoDB alunos;
+    EditoraDB editoras;
+    FuncionarioDB funcionarios;
+    LivroDB livros;
+    EmprestimoDB emprestimos;
     
     public ViewWindows() {
         initComponents();
         this.setLocationRelativeTo(null); 
         alunos = new AlunoDB();
+        editoras = new EditoraDB();
+        funcionarios = new FuncionarioDB();
+        livros = new LivroDB();
+        emprestimos = new EmprestimoDB();
     }
 
     @SuppressWarnings("unchecked")
@@ -31,8 +43,6 @@ public class ViewWindows extends javax.swing.JFrame {
         btnLocalizarAlunos = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        txtCodigoEditora = new javax.swing.JTextField();
         txtNomeEditora = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         btnGravarEditora = new javax.swing.JButton();
@@ -164,8 +174,6 @@ public class ViewWindows extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Aluno", jPanel1);
 
-        jLabel7.setText("Código:");
-
         jLabel8.setText("Nome:");
 
         btnGravarEditora.setText("Gravar");
@@ -194,40 +202,36 @@ public class ViewWindows extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 7, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtCodigoEditora, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNomeEditora, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 265, Short.MAX_VALUE)
+                                .addComponent(btnLocalizarEditoras)))
+                        .addGap(0, 18, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnGravarEditora)
-                            .addComponent(btnLocalizarEditoras))))
-                .addGap(0, 18, Short.MAX_VALUE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtNomeEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCodigoEditora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txtNomeEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnGravarEditora)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -526,7 +530,7 @@ public class ViewWindows extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addComponent(jLabel17)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLocalizarEmprestimos)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -549,23 +553,54 @@ public class ViewWindows extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLocalizarEditorasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocalizarEditorasActionPerformed
-       
+        txtEditoras.setText("");
+        for(Editora e : editoras.retornarTodas()){
+            txtEditoras.append("--------------\n");
+            txtEditoras.append("Nome: " + e.getNome() + "\n");
+            txtEditoras.append("--------------\n");
+        }
     }//GEN-LAST:event_btnLocalizarEditorasActionPerformed
 
     private void btnGravarEditoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarEditoraActionPerformed
+        Editora editora = new Editora();
+        editora.setNome(txtNomeEditora.getText());
         
+        editoras.inserirEditora(editora);
+        
+        JOptionPane.showMessageDialog(rootPane, "Editora cadastrada com sucesso!");
+        txtNomeEditora.setText("");
     }//GEN-LAST:event_btnGravarEditoraActionPerformed
 
     private void btnLocalizarLivrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocalizarLivrosActionPerformed
-       
+        txtLivros.setText("");
+        for(Livro l : livros.retornarTodos()){
+            txtLivros.append("--------------\n");
+            txtLivros.append("Nome: " + l.getNome() + "\n");
+            txtLivros.append("Código: " + l.getCodigo() + "\n");
+            txtLivros.append("Editora: " + l.getEditora() + "\n");
+            txtLivros.append("--------------\n");
+        }
     }//GEN-LAST:event_btnLocalizarLivrosActionPerformed
 
     private void btnGravarLivroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarLivroActionPerformed
+        Editora editora = (Editora) cbEditorasLivro.getSelectedItem();
+        Livro livro = new Livro(editora);
+        livro.setNome(txtNomeLivro.getText());
+        livro.setCodigo(txtCodigoLivro.getText());
         
+        livros.inserirLivro(livro);
+        
+        JOptionPane.showMessageDialog(rootPane, "Livro cadastrado com sucesso!");
+        txtCodigoLivro.setText("");
+        txtNomeLivro.setText("");
+        cbEditorasLivro.setSelectedIndex(-1);
     }//GEN-LAST:event_btnGravarLivroActionPerformed
 
     private void btnCarregarEditorasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarregarEditorasActionPerformed
-       
+        cbEditorasLivro.removeAllItems();
+        for(Editora e : editoras.retornarTodas()){
+            cbEditorasLivro.addItem(e);
+        }
     }//GEN-LAST:event_btnCarregarEditorasActionPerformed
 
     private void btnLocalizarAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocalizarAlunosActionPerformed
@@ -591,11 +626,25 @@ public class ViewWindows extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGravarAlunoActionPerformed
 
     private void btnGravarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarFuncionarioActionPerformed
-  
+        Funcionario funcionario = new Funcionario();
+        funcionario.setCpf(txtCPFFuncionario.getText());
+        funcionario.setNome(txtNomeFuncionario.getText());
+        
+        funcionarios.inserirFuncionario(funcionario);
+        
+        JOptionPane.showMessageDialog(rootPane, "Funcionário cadastrado com sucesso!");
+        txtCPFFuncionario.setText("");
+        txtNomeFuncionario.setText("");
     }//GEN-LAST:event_btnGravarFuncionarioActionPerformed
 
     private void btnLocalizarFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocalizarFuncionariosActionPerformed
-
+        txtFuncionarios.setText("");
+        for(Funcionario f : funcionarios.retornarTodos()){
+            txtFuncionarios.append("--------------\n");
+            txtFuncionarios.append("Nome: " + f.getNome() + "\n");
+            txtFuncionarios.append("CPF: " + f.getCpf()+ "\n");
+            txtFuncionarios.append("--------------\n");
+        }
     }//GEN-LAST:event_btnLocalizarFuncionariosActionPerformed
 
     private void cbFuncionariosEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbFuncionariosEmprestimoActionPerformed
@@ -603,19 +652,55 @@ public class ViewWindows extends javax.swing.JFrame {
     }//GEN-LAST:event_cbFuncionariosEmprestimoActionPerformed
 
     private void btnLocalizarEmprestimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocalizarEmprestimosActionPerformed
-
+        txtEmprestimos.setText("");
+        for(Emprestimo e : emprestimos.retornarTodos()){
+            txtEmprestimos.append("--------------\n");
+            txtEmprestimos.append("Funcionario: " + e.getFuncionario()+ "\n");
+            txtEmprestimos.append("Aluno: " + e.getAluno()+ "\n");
+            txtEmprestimos.append("Livro: " + e.getLivro()+ "\n");
+            txtEmprestimos.append("Data entrega: " + e.getDataEntrega()+ "\n");
+            txtEmprestimos.append("--------------\n");
+        }
     }//GEN-LAST:event_btnLocalizarEmprestimosActionPerformed
 
     private void btnGravarEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarEmprestimoActionPerformed
-      
+        Livro livro = (Livro) cbLivrosEmprestimo.getSelectedItem();
+        Aluno aluno = (Aluno) cbAlunosEmprestimo.getSelectedItem();        
+        Funcionario funcionario = (Funcionario) cbFuncionariosEmprestimo.getSelectedItem();
+        
+        // Tratando o atributo de qualidade que diz que o Aluno so pode ter 3 emprestimos
+        if(emprestimos.retornarEmprestimoAluno(aluno).size() == 3){
+            JOptionPane.showMessageDialog(rootPane, "Esse aluno já possui 3 emprestimos!");
+            return;
+        }
+        
+        Emprestimo emprestimo = new Emprestimo();
+        emprestimo.setLivro(livro);
+        emprestimo.setFuncionario(funcionario);
+        emprestimo.setAluno(aluno);
+        emprestimo.setDataEntrega(txtDataEntregaEmprestimo.getText());
+        
+        emprestimos.inserirEmprestimo(emprestimo);
+        
+        JOptionPane.showMessageDialog(rootPane, "Emprestimo cadastrado com sucesso!");
+        txtDataEntregaEmprestimo.setText("");
+        cbLivrosEmprestimo.setSelectedIndex(-1);
+        cbAlunosEmprestimo.setSelectedIndex(-1);
+        cbFuncionariosEmprestimo.setSelectedIndex(-1);
     }//GEN-LAST:event_btnGravarEmprestimoActionPerformed
 
     private void btnCarregarFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarregarFuncionariosActionPerformed
-
+        cbFuncionariosEmprestimo.removeAllItems();
+        for(Funcionario f : funcionarios.retornarTodos()){
+            cbFuncionariosEmprestimo.addItem(f);
+        }
     }//GEN-LAST:event_btnCarregarFuncionariosActionPerformed
 
     private void btnCarregarLivrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarregarLivrosActionPerformed
-
+        cbLivrosEmprestimo.removeAllItems();
+        for(Livro l : livros.retornarTodos()){
+            cbLivrosEmprestimo.addItem(l);
+        }
     }//GEN-LAST:event_btnCarregarLivrosActionPerformed
 
     private void btnCarregarAlunosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCarregarAlunosActionPerformed
@@ -688,7 +773,6 @@ public class ViewWindows extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -704,7 +788,6 @@ public class ViewWindows extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea txtAlunos;
     private javax.swing.JTextField txtCPFFuncionario;
-    private javax.swing.JTextField txtCodigoEditora;
     private javax.swing.JTextField txtCodigoLivro;
     private javax.swing.JTextField txtDataEntregaEmprestimo;
     private javax.swing.JTextArea txtEditoras;

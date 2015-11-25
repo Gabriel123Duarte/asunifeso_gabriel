@@ -9,7 +9,7 @@ public class Livro {
     private String codigo;
     private String nome;
     private Editora editora;
-
+    
     public Livro(Editora editora){
         this.editora = editora;
     }
@@ -54,6 +54,12 @@ public class Livro {
     public void setEditora(Editora editora) {
         this.editora = editora;
     }
+
+    @Override
+    public String toString() {
+        return nome;
+    }
+    
     
     
 }
