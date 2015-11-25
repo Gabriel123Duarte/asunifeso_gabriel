@@ -4,25 +4,11 @@ package br.com.unifeso.biblioteca.model;
  *
  * @author Gabriel Duarte <gabriellagoa10@yahoo.com.br>
  */
-public class Funcionario {
+public class Funcionario extends Usuario{
     
-    private String nome;
-    private String cpf;
+   private String cpf;
 
-    /**
-     * @return the nome
-     */
-    public String getNome() {
-        return nome;
-    }
-
-    /**
-     * @param nome the nome to set
-     */
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
+    
     /**
      * @return the cpf
      */
