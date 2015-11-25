@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @author Gabriel Duarte <gabriellagoa10@yahoo.com.br>
  */
-public class EmprestimoDB {
+public class EmprestimoDB implements LogAplicacao{
     
     private List<Emprestimo> emprestimos;
     
@@ -19,6 +19,7 @@ public class EmprestimoDB {
     
     public void inserirEmprestimo(Emprestimo emprestimo){
         emprestimos.add(emprestimo);
+        gravarLog("Novo empréstimo realizado!");
     }
     
     public List<Emprestimo> retornarTodos(){
@@ -32,5 +33,10 @@ public class EmprestimoDB {
             if(e.getAluno().getMatricula().equals(aluno.getMatricula()))
                 emp.add(e);
         return emp;
+    }
+    
+    @Override
+    public void gravarLog(String log) {
+        System.out.println(log);
     }
 }

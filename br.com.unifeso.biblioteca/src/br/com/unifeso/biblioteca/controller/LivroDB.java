@@ -8,7 +8,7 @@ import java.util.List;
  *
  * @author Gabriel Duarte <gabriellagoa10@yahoo.com.br>
  */
-public class LivroDB {
+public class LivroDB implements LogAplicacao{
     
      private List<Livro> livros;
     
@@ -18,9 +18,15 @@ public class LivroDB {
     
     public void inserirLivro(Livro livro){
         livros.add(livro);
+        gravarLog("Novo livro: " + livro.getNome());
     }
     
     public List<Livro> retornarTodos(){
         return livros;
+    }
+    
+    @Override
+    public void gravarLog(String log) {
+        System.out.println(log);
     }
 }

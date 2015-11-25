@@ -8,7 +8,7 @@ import java.util.List;
  *
  * @author Gabriel Duarte <gabriellagoa10@yahoo.com.br>
  */
-public class FuncionarioDB {
+public class FuncionarioDB implements LogAplicacao{
     
     private List<Funcionario> funcionarios;
     
@@ -18,9 +18,15 @@ public class FuncionarioDB {
     
     public void inserirFuncionario(Funcionario funcionario){
         funcionarios.add(funcionario);
+        gravarLog("Funcionário cadastrado: " + funcionario.getNome());
     }
     
     public List<Funcionario> retornarTodos(){
         return funcionarios;
+    }
+    
+    @Override
+    public void gravarLog(String log) {
+        System.out.println(log);
     }
 }

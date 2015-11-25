@@ -8,7 +8,7 @@ import java.util.List;
  *
  * @author Gabriel Duarte <gabriellagoa10@yahoo.com.br>
  */
-public class EditoraDB {
+public class EditoraDB implements LogAplicacao{
     
     private List<Editora> editoras;
     
@@ -18,9 +18,15 @@ public class EditoraDB {
     
     public void inserirEditora(Editora editora){
         editoras.add(editora);
+        gravarLog("Editora cadastrada: " + editora.getNome());
     }
     
     public List<Editora> retornarTodas(){
         return editoras;
+    }
+
+    @Override
+    public void gravarLog(String log) {
+        System.out.println(log);
     }
 }
