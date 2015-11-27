@@ -10,7 +10,11 @@ public class Emprestimo {
     private Livro livro;
     private Funcionario funcionario;
     private Aluno aluno;
-
+    private Boolean entregue;
+    
+    public Emprestimo(){
+        entregue = false;
+    }
     /**
      * @return the dataEntrega
      */
@@ -67,11 +71,24 @@ public class Emprestimo {
         this.aluno = aluno;
     }
 
+    /**
+     * @return the entregue
+     */
+    public Boolean getEntregue() {
+        return entregue;
+    }
+
+    /**
+     * @param entregue the entregue to set
+     */
+    public void setEntregue(Boolean entregue) {
+        this.entregue = entregue;
+    }   
+    
+
     @Override
     public String toString() {
         return "Funcionário: " + funcionario.getNome() + "\n" + "Aluno: " + aluno.getNome() + "\n" + 
                "Livro: " + livro.getNome() +  "\nData Entrega: " + getDataEntrega() + "\n";
     }
-    
-    
 }

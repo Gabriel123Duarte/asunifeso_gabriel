@@ -724,8 +724,8 @@ public class ViewWindows extends javax.swing.JFrame {
         Funcionario funcionario = (Funcionario) cbFuncionariosEmprestimo.getSelectedItem();
         
         // Tratando o atributo de qualidade que diz que o Aluno so pode ter 3 emprestimos
-        if(emprestimos.retornarEmprestimoAluno(aluno).size() == 3){
-            JOptionPane.showMessageDialog(rootPane, "Esse aluno já possui 3 emprestimos!");
+        if(emprestimos.retornarEmprestimoAluno(aluno, false).size() == 3){
+            JOptionPane.showMessageDialog(rootPane, "Esse aluno atingiu o limite máximo de empréstimos!");
             return;
         }
         
